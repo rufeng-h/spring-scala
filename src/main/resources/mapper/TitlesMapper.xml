@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.windcf.springscala.mapper.TitlesMapper">
+  <resultMap id="BaseResultMap" type="com.windcf.springscala.domain.Titles">
+    <!--@mbg.generated-->
+    <!--@Table titles-->
+    <id column="emp_no" jdbcType="INTEGER" property="empNo" />
+    <id column="title" jdbcType="VARCHAR" property="title" />
+    <id column="from_date" jdbcType="DATE" property="fromDate" />
+    <result column="to_date" jdbcType="DATE" property="toDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    emp_no, title, from_date, to_date
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from titles
+    where emp_no = #{empNo,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+      and from_date = #{fromDate,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from titles
+    where emp_no = #{empNo,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+      and from_date = #{fromDate,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="com.windcf.springscala.domain.Titles">
+    <!--@mbg.generated-->
+    insert into titles (emp_no, title, from_date, 
+      to_date)
+    values (#{empNo,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{fromDate,jdbcType=DATE}, 
+      #{toDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.windcf.springscala.domain.Titles">
+    <!--@mbg.generated-->
+    insert into titles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="empNo != null">
+        emp_no,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="fromDate != null">
+        from_date,
+      </if>
+      <if test="toDate != null">
+        to_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="empNo != null">
+        #{empNo,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="fromDate != null">
+        #{fromDate,jdbcType=DATE},
+      </if>
+      <if test="toDate != null">
+        #{toDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.windcf.springscala.domain.Titles">
+    <!--@mbg.generated-->
+    update titles
+    <set>
+      <if test="toDate != null">
+        to_date = #{toDate,jdbcType=DATE},
+      </if>
+    </set>
+    where emp_no = #{empNo,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+      and from_date = #{fromDate,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.windcf.springscala.domain.Titles">
+    <!--@mbg.generated-->
+    update titles
+    set to_date = #{toDate,jdbcType=DATE}
+    where emp_no = #{empNo,jdbcType=INTEGER}
+      and title = #{title,jdbcType=VARCHAR}
+      and from_date = #{fromDate,jdbcType=DATE}
+  </update>
+</mapper>

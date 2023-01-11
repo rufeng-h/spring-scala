@@ -1,0 +1,26 @@
+server:
+  port: 8000
+
+
+spring:
+  datasource:
+    username: root
+    password: '@rufeng20001123'
+    url: jdbc:mysql://localhost:3306/employees
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    use-generated-keys: true
+    map-underscore-to-camel-case: true
+    jdbc-type-for-null: null
+    cache-enabled: false
+    local-cache-scope: statement
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    web: debug
+    sql: debug
+    org.apache.ibatis: debug
